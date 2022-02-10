@@ -158,6 +158,9 @@
 	resetGame();
 </script>
 
+<svelte:head>
+	<title>Snake</title>
+</svelte:head>
 <main>
 	<h1>Snake</h1>
 	<div id="board">
