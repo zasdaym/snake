@@ -75,7 +75,7 @@
 	function startGame() {
 		window.addEventListener('keydown', handleKey);
 		spawnFood();
-		continueGame();
+		runGame();
 	}
 
 	function pauseGame() {
@@ -84,9 +84,11 @@
 		clearInterval(timer);
 	}
 
-	function continueGame() {
+	const gameInterval = 175;
+
+	function runGame() {
 		gameState = GameState.Playing;
-		timer = setInterval(moveSnake, 200);
+		timer = setInterval(moveSnake, gameInterval);
 	}
 
 	function moveSnake() {
@@ -173,7 +175,7 @@
 	<hr />
 	<button on:click={startGame} class:hidden={gameState !== GameState.Initial}>Start</button>
 	<button on:click={pauseGame} class:hidden={gameState !== GameState.Playing}>Pause</button>
-	<button on:click={continueGame} class:hidden={gameState !== GameState.Paused}>Continue</button>
+	<button on:click={runGame} class:hidden={gameState !== GameState.Paused}>Continue</button>
 	<button on:click={resetGame} class:hidden={gameState !== GameState.Paused}>Reset</button>
 	<p>Score: {score}</p>
 </main>
